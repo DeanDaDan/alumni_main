@@ -1,0 +1,236 @@
+/* ============================================
+   tambah.css — Tambah Alumni Form
+   (same base as dashboard, form-specific extras)
+   ============================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+    --primary:     #1a3a5c;
+    --primary-lt:  #244d7a;
+    --accent:      #c8a96e;
+    --bg:          #f0f4f8;
+    --white:       #ffffff;
+    --sidebar-w:   260px;
+    --gray-100:    #f8f9fa;
+    --gray-200:    #e9ecef;
+    --gray-300:    #dee2e6;
+    --gray-500:    #6c757d;
+    --gray-700:    #495057;
+    --gray-900:    #212529;
+    --error:       #e74c3c;
+    --success:     #27ae60;
+    --radius:      10px;
+    --shadow-sm:   0 2px 8px rgba(0,0,0,.07);
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    min-height: 100vh;
+    display: flex;
+}
+
+/* ---- Sidebar (same as dashboard) ---- */
+.sidebar {
+    width: var(--sidebar-w); min-height: 100vh;
+    background: var(--primary);
+    display: flex; flex-direction: column;
+    position: fixed; top: 0; left: 0; z-index: 100;
+}
+.sidebar-brand { display: flex; align-items: center; gap: .75rem; padding: 1.5rem 1.25rem; border-bottom: 1px solid rgba(255,255,255,.1); }
+.brand-icon { font-size: 1.8rem; }
+.brand-name { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); }
+.sidebar-nav { flex: 1; padding: 1rem 0; }
+.nav-item { display: flex; align-items: center; gap: .75rem; padding: .75rem 1.25rem; color: rgba(255,255,255,.7); text-decoration: none; font-size: .9rem; font-weight: 500; transition: all .2s; border-left: 3px solid transparent; }
+.nav-item:hover { background: rgba(255,255,255,.08); color: var(--white); }
+.nav-item.active { background: rgba(255,255,255,.12); color: var(--white); border-left-color: var(--accent); }
+.nav-icon { font-size: 1rem; }
+.sidebar-footer { padding: 1rem 1.25rem; border-top: 1px solid rgba(255,255,255,.1); }
+.user-info { display: flex; align-items: center; gap: .75rem; margin-bottom: .75rem; }
+.user-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--accent); color: var(--primary); font-weight: 700; display: flex; align-items: center; justify-content: center; font-size: .9rem; flex-shrink: 0; }
+.user-name { font-size: .9rem; font-weight: 600; color: var(--white); }
+.user-role { font-size: .75rem; color: rgba(255,255,255,.55); text-transform: capitalize; }
+.btn-logout { display: block; text-align: center; padding: .5rem; border-radius: 6px; background: rgba(231,76,60,.15); color: #ff8a80; text-decoration: none; font-size: .85rem; font-weight: 500; transition: background .2s; }
+.btn-logout:hover { background: rgba(231,76,60,.3); }
+
+/* ---- Main Content ---- */
+.main-content { margin-left: var(--sidebar-w); flex: 1; padding: 2rem; min-height: 100vh; }
+.page-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem; }
+.page-title { font-family: 'Playfair Display', serif; font-size: 1.75rem; color: var(--gray-900); }
+.page-subtitle { color: var(--gray-500); font-size: .9rem; margin-top: .2rem; }
+
+.btn-back { display: inline-flex; align-items: center; gap: .4rem; padding: .6rem 1.1rem; background: var(--gray-200); color: var(--gray-700); border-radius: 8px; text-decoration: none; font-size: .9rem; font-weight: 500; transition: background .2s; }
+.btn-back:hover { background: var(--gray-300); }
+
+/* Alert */
+.alert { padding: .85rem 1rem; border-radius: 8px; margin-bottom: 1.25rem; font-size: .9rem; font-weight: 500; }
+.alert ul { margin-left: 1.2rem; margin-top: .3rem; }
+.alert-error   { background: #fdf0ef; color: var(--error);   border-left: 4px solid var(--error); }
+.alert-success { background: #eafaf1; color: var(--success); border-left: 4px solid var(--success); }
+
+/* Form Card */
+.form-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+}
+
+.form-section {
+    padding: 1.75rem 2rem;
+    border-bottom: 1px solid var(--gray-200);
+}
+.form-section:last-of-type { border-bottom: none; }
+
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    color: var(--primary);
+    margin-bottom: 1.25rem;
+    padding-bottom: .5rem;
+    border-bottom: 2px solid rgba(200,169,110,.3);
+    display: inline-block;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+.form-group-full { grid-column: 1 / -1; }
+
+.form-group label {
+    display: block;
+    font-size: .85rem;
+    font-weight: 600;
+    color: var(--gray-700);
+    margin-bottom: .4rem;
+    letter-spacing: .02em;
+}
+.required { color: var(--error); }
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+select,
+textarea {
+    width: 100%;
+    padding: .7rem .9rem;
+    border: 1.5px solid var(--gray-300);
+    border-radius: 7px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: .92rem;
+    color: var(--gray-700);
+    background: var(--white);
+    transition: border-color .2s, box-shadow .2s;
+    outline: none;
+}
+input:focus, select:focus, textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(26,58,92,.08);
+}
+textarea { resize: vertical; }
+
+.form-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: .75rem;
+    padding: 1.25rem 2rem;
+    background: var(--gray-100);
+    border-top: 1px solid var(--gray-200);
+}
+
+.btn-primary {
+    padding: .7rem 1.5rem;
+    background: var(--primary);
+    color: var(--white);
+    border: none; border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: .95rem; font-weight: 600; cursor: pointer;
+    transition: background .2s;
+}
+.btn-primary:hover { background: var(--primary-lt); }
+
+.btn-secondary {
+    padding: .7rem 1.25rem;
+    background: var(--gray-200);
+    color: var(--gray-700);
+    border-radius: 8px;
+    font-size: .95rem; font-weight: 500;
+    text-decoration: none;
+    transition: background .2s;
+}
+.btn-secondary:hover { background: var(--gray-300); }
+
+/* ── Input disabled (ID readonly) ── */
+.input-disabled {
+    background: var(--border);
+    color: var(--muted);
+    cursor: not-allowed;
+}
+
+/* ── Section optional label ── */
+.section-optional {
+    font-size: .8rem;
+    font-weight: 400;
+    color: var(--muted);
+}
+
+/* ── Password wrap ── */
+.input-password-wrap {
+    position: relative;
+    display: flex;
+}
+.input-password-wrap input {
+    width: 100%;
+    padding-right: 2.8rem;
+}
+.btn-toggle-pw {
+    position: absolute;
+    right: .6rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+/* ── Role Cards ── */
+.role-options {
+    display: flex;
+    gap: .75rem;
+    flex-wrap: wrap;
+}
+.role-card {
+    flex: 1;
+    min-width: 140px;
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+    padding: .75rem 1rem;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: border-color .2s, background .1s;
+}
+.role-card input[type="radio"] { display: none; }
+.role-card-label { font-weight: 600; font-size: .9rem; }
+.role-card-desc  { font-size: .75rem; color: var(--muted); }
+.role-card--active {
+    border-color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 8%, transparent);
+}
+.role-card:hover {
+    background-color: #82868a;
+    color: #eafaf1;
+}
+
+/* ── Form hint ── */
+.form-hint {
+    font-size: .77rem;
+    color: var(--muted);
+    margin-top: .2rem;
+    display: block;
+}

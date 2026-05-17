@@ -1,0 +1,186 @@
+/* ============================================
+   dashboard.css — Admin (Table) & User (Grid)
+   ============================================ */
+
+/* --- 1. RESET --- */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'DM Sans', sans-serif; }
+body { background-color: #efefef; color: #333; }
+
+/* --- 2. NAVBAR --- */
+.navbar {
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    border-bottom: 2px solid #ddd;
+}
+.nav-brand { display: flex; align-items: center; gap: 10px; }
+.brand-logo { height: 40px; }
+.brand-text { font-size: 1.8rem; font-weight: normal; color: #000; letter-spacing: -1px; }
+.nav-links { display: flex; gap: 25px; margin-right: auto; margin-left: 50px; } 
+.nav-link { text-decoration: none; color: #000; font-size: 1.2rem; }
+.nav-link:hover { color: #5bc0de; }
+
+/* --- 3. AREA KONTROL (PROFIL & FILTER) --- */
+.controls-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+/* Kotak Profil Akun */
+.user-profile {
+    background: #fff;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border: 1px solid #aaa;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.15);
+}
+.user-avatar {
+    background: #4a5c75;
+    color: white;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.user-info { display: flex; flex-direction: column; }
+.user-role { font-weight: bold; font-size: 1.1rem; color: #333; text-transform: capitalize; }
+.btn-logout-small { color: #d9534f; text-decoration: none; font-size: 0.85rem; font-weight: bold; margin-top: 3px; }
+.btn-logout-small:hover { text-decoration: underline; }
+
+/* Kotak Filter */
+.filter-box {
+    background: #fff;
+    padding: 10px;
+    display: flex;
+    gap: 10px;
+    border: 1px solid #aaa;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.15);
+}
+.filter-input { width: 300px; padding: 10px; border: 1px solid #aaa; font-size: 1rem; }
+.filter-select { padding: 10px; border: 1px solid #aaa; color: #666; font-size: 1rem; }
+.btn-filter { background: #5bc0de; color: white; border: none; padding: 0 25px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: 0.2s; }
+.btn-filter:hover { background: #46a8c3; }
+
+/* --- 4. MAIN CONTENT & HEADER (FIXED FLEX LAYOUT) --- */
+.main-content { max-width: 1200px; margin: 0 auto; padding: 0 20px 40px; }
+
+/* Diubah ke Flexbox biar pembagian ruang tengah otomatis pas */
+.action-header { 
+    display: flex !important;
+    align-items: center !important; 
+    justify-content: space-between !important;
+    gap: 20px !important;
+    margin-bottom: 20px !important; 
+    height: 95px !important; 
+    width: 100% !important;
+}
+
+/* Kiri: Judul dan tombol dikunci ukurannya biar ga gepeng */
+.title-group { display: flex; flex-direction: column; flex-shrink: 0 !important; }
+.page-title { font-size: 2.2rem; font-weight: normal; letter-spacing: -1px; margin-bottom: -5px; color: #000; }
+.page-subtitle { font-size: 0.9rem; color: #555; }
+
+.btn-group { display: flex; flex-direction: column; gap: 5px; flex-shrink: 0 !important; }
+.btn-add { background: #5bc0de; color: white; text-decoration: none; padding: 8px 15px; font-weight: bold; font-size: 1rem; display: inline-block; transition: 0.2s; border-radius: 4px; text-align: center; }
+.btn-add:hover { background: #46a8c3; }
+.alert-mini { background: #d9edf7; color: #31708f; padding: 2px 10px; font-size: 0.8rem; border: 1px solid #bce8f1; }
+
+/* Tengah: Wadah Marquee dibuat melar (flex-grow) ngisi area kosong */
+.action-header > div:nth-of-type(3) {
+    flex-grow: 1 !important;
+    min-width: 100px !important;
+    display: flex !important;
+    align-items: center !important;
+    overflow: hidden !important;
+}
+
+/* Gembok display none dilepas, warna diganti abu-abu gelap biar kelihatan jalan */
+.copy-text { 
+    display: block !important; 
+    width: 100% !important;
+    font-size: 1.5rem; 
+    color: #555 !important; 
+    font-weight: normal; 
+}
+
+/* Kanan: Gambar ditarik lebar proporsional sisa container */
+.img-header-alumni {
+    height: 95px !important; 
+    width: 350px !important; 
+    object-fit: cover !important; 
+    border-radius: 6px !important;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    flex-shrink: 0 !important;
+    display: block !important;
+}
+
+/* --- 5. TAMPILAN ADMIN (TABEL) --- */
+.table-card { background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border: 1px solid #ddd; }
+.data-table { width: 100%; border-collapse: collapse; }
+.data-table thead th { background: #444; color: #fff; text-align: left; padding: 10px 15px; font-weight: normal; }
+.data-table tbody td { padding: 15px; border-bottom: 1px solid #e0e0e0; background: #f9f9f9; }
+.data-table tbody tr:hover td { background: #f1f1f1; }
+
+/* --- 6. TAMPILAN USER (KARTU / GRID) --- */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.alumni-card {
+    background: #fff;
+    border: 1px solid #aaa;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.15);
+    padding: 20px;
+}
+.alumni-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 2px 5px 12px rgba(0,0,0,0.2);
+}
+.card-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #4a5c75;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.card-body { flex: 1; min-width: 0; }
+.card-name { font-weight: bold; font-size: 1.1rem; color: #000; margin-bottom: 3px; }
+.card-nim { font-size: 0.85rem; color: #666; margin-bottom: 8px; }
+.card-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 8px; }
+.card-info { font-size: 0.85rem; color: #555; line-height: 1.4; }
+
+/* --- 7. BADGES & TOMBOL AKSI --- */
+.badge-angkatan { background: #4a5c75; color: white; width: 28px; height: 28px; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 0.85rem; font-weight: bold; }
+.badge-jurusan { background: #e0e0e0; color: #333; padding: 3px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; }
+
+.btn-edit { background: #e0e0e0; color: #555; text-decoration: none; padding: 4px 10px; border-radius: 3px; font-size: 0.85rem; margin-right: 5px; display: inline-block; }
+.btn-delete { background: #fce8e8; color: #d9534f; border: none; padding: 4px 10px; border-radius: 3px; font-size: 0.85rem; cursor: pointer; }
+
+/* --- 8. EMPTY STATE & FORM --- */
+.empty-state { text-align: center; padding: 60px 20px; color: #666; width: 100%; }
+.empty-icon { font-size: 3.5rem; margin-bottom: 15px; display: block; color: #aaa; }
+
+.form-wrapper { background: #fff; padding: 25px; border: 1px solid #aaa; box-shadow: 2px 2px 8px rgba(0,0,0,0.15); max-width: 600px; margin-top: 20px; }
+.form-group { display: flex; flex-direction: column; gap: 5px; margin-bottom: 15px; }
+.form-label { font-weight: bold; font-size: 0.9rem; color: #333; }
+.form-input { padding: 10px; border: 1px solid #aaa; font-size: 1rem; width: 100%; }
+.form-input:focus { outline: none; border-color: #5bc0de; }
