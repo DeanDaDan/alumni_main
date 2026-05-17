@@ -1,0 +1,168 @@
+/* ============================================
+   auth.css — Updated to Match Alumni Portal UI
+   ============================================ */
+
+*, *::before, *::after { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+}
+
+:root {
+    --primary:      #333333;    /* Hitam tombol */
+    --accent:       #5bc0de;    /* Biru muda tombol kembali */
+    --bg-gray:      #e9ecef;    /* Background abu-abu luar */
+    --white:        #ffffff;
+    --border-gray:  #dee2e6;
+    --text-muted:   #6c757d;
+    --accent-line:  #5bc0de;    /* Garis dekorasi di samping sub-judul */
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-gray);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.auth-container {
+    width: 100%;
+    max-width: 900px; /* Diperlebar agar layout input bisa berdampingan */
+}
+
+.auth-card {
+    background: var(--white);
+    padding: 40px;
+    border-radius: 4px; /* Border radius lebih kecil/tajam sesuai gambar */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+/* Header Section */
+.auth-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 30px;
+}
+
+.auth-title-group {
+    text-align: left;
+}
+
+.auth-title {
+    font-size: 2rem;
+    color: #333;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.auth-subtitle {
+    color: var(--text-muted);
+    font-size: 1rem;
+}
+
+/* Tombol Kembali (Biru Muda) */
+.btn-back {
+    background-color: var(--accent);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: opacity 0.2s;
+}
+
+.btn-back:hover {
+    opacity: 0.8;
+}
+
+/* Section Divider (Garis Biru di samping Teks) */
+.section-title {
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    margin: 30px 0 20px 0;
+}
+
+.section-title::before {
+    content: "";
+    display: inline-block;
+    width: 4px;
+    height: 20px;
+    background-color: var(--accent-line);
+    margin-right: 12px;
+}
+
+/* Form Grid (Biar input bisa 2 kolom) */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 600px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+input[type="text"],
+input[type="password"],
+select {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid var(--border-gray);
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: #fff;
+    outline: none;
+}
+
+input:focus, select:focus {
+    border-color: var(--accent);
+}
+
+/* Tombol Utama (Hitam) */
+.btn-auth {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--primary);
+    color: var(--white);
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background 0.2s;
+}
+
+.btn-auth:hover {
+    background-color: #000;
+}
+
+.auth-footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9rem;
+}
+
+.auth-footer a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: bold;
+}
